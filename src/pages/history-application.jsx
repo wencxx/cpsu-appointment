@@ -14,73 +14,66 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { Badge } from "@/components/ui/badge";
-import { SquarePen, Trash, Check } from "lucide-react";
+import { SquarePen, Trash } from "lucide-react";
 
-const approveGoodMoral = [
+const approveApplications = [
   {
     id: 1,
-    orNumber: "2021-0572-K",
+    idNumber: "2021-0572-K",
     fullName: "Wency Baterna",
     courseYear: "BSIT 4",
-    gender: "Male",
-    syGraduated: "2025",
-    syEnrolled: "2001",
-    purpose: "Exam",
+    address: "La Castellana",
+    number: "09638806212",
+    birthday: "2001-04-09",
+    guardianName: "Rochelle Raniola",
+    guardianContact: "09563990365",
     scheduleDate: "2025-01-30",
-    status: "Pending",
+    status: "Approve",
   },
 ];
 
-function PendingRequests() {
+function HistoryApplication() {
   return (
     <>
       <div className="mb-10 w-full flex justify-between">
-        <h1 className="font-medium text-lg">List of Pending Good Moral Requests</h1>
+        <h1 className="font-medium text-lg">Student ID Card History</h1>
       </div>
       <Table>
         <TableCaption>
-          list of pending good moral requests.
+          Student ID card applications history.
         </TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead>O.R Number</TableHead>
+            <TableHead>ID Number</TableHead>
             <TableHead>Full Name</TableHead>
             <TableHead>Course/Year</TableHead>
-            <TableHead>Gender</TableHead>
-            <TableHead>SY Graduated</TableHead>
-            <TableHead>SY Enrolled</TableHead>
-            <TableHead>Purpose</TableHead>
+            <TableHead>Address</TableHead>
+            <TableHead>Contact Number</TableHead>
+            <TableHead>Birthday</TableHead>
+            <TableHead>Guardian Name</TableHead>
+            <TableHead>Guardian Contact</TableHead>
             <TableHead>Schedule Date</TableHead>
             <TableHead>Status</TableHead>
             <TableHead className="text-center">Action</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {approveGoodMoral.map((goodMoral) => (
-            <TableRow key={goodMoral.id}>
-              <TableCell>{goodMoral.orNumber}</TableCell>
-              <TableCell>{goodMoral.fullName}</TableCell>
-              <TableCell>{goodMoral.courseYear}</TableCell>
-              <TableCell>{goodMoral.gender}</TableCell>
-              <TableCell>{goodMoral.syGraduated}</TableCell>
-              <TableCell>{goodMoral.syEnrolled}</TableCell>
-              <TableCell>{goodMoral.purpose}</TableCell>
-              <TableCell>{goodMoral.scheduleDate}</TableCell>
+          {approveApplications.map((application) => (
+            <TableRow key={application.id}>
+              <TableCell>{application.idNumber}</TableCell>
+              <TableCell>{application.fullName}</TableCell>
+              <TableCell>{application.courseYear}</TableCell>
+              <TableCell>{application.address}</TableCell>
+              <TableCell>{application.number}</TableCell>
+              <TableCell>{application.birthday}</TableCell>
+              <TableCell>{application.guardianName}</TableCell>
+              <TableCell>{application.guardianContact}</TableCell>
+              <TableCell>{application.scheduleDate}</TableCell>
               <TableCell>
-                <Badge variant="pending">{goodMoral.status}</Badge>
+                <Badge variant="approved">{application.status}</Badge>
               </TableCell>
               <TableCell>
                 <div className="flex justify-center gap-x-1">
-                  <TooltipProvider>
-                    <Tooltip>
-                      <TooltipTrigger>
-                        <Check className="cursor-pointer" size={17} color="green" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Approve Request</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipTrigger>
@@ -111,4 +104,4 @@ function PendingRequests() {
   );
 }
 
-export default PendingRequests;
+export default HistoryApplication;

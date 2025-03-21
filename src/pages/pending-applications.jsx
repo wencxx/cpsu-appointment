@@ -36,7 +36,7 @@ function PendingApplication() {
   return (
     <>
       <div className="mb-10 w-full flex justify-between">
-        <h1 className="font-bold text-xl">List of Pending Student ID Card</h1>
+        <h1 className="font-medium text-lg">List of Pending Student ID Card</h1>
       </div>
       <Table>
         <TableCaption>

@@ -5,6 +5,9 @@ import PendingApplication from "./pages/pending-applications"
 import ApproveRequests from "./pages/approve-requests"
 import PendingRequests from "./pages/pending-requests"
 import LoginPage from "./pages/login"
+import HistoryApplication from "./pages/history-application"
+import HistoryRequest from "./pages/history-request"
+import Calendar from "./pages/calendar"
 
 function App() {
   return (
@@ -17,6 +20,9 @@ function App() {
               <Route path="/pending-applications" element={<PendingApplication />} />
               <Route path="/approve-requests" element={<ApproveRequests />} />
               <Route path="/pending-requests" element={<PendingRequests />} />
+              <Route path="/history-applications" element={<HistoryApplication />} />
+              <Route path="/history-requests" element={<HistoryRequest />} />
+              <Route path="/calendar" element={<Calendar />} />
             </Route>
         </Routes>
       </Router>
