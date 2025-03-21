@@ -9,6 +9,10 @@
   font-family: 'Inter';
 }
 
+@theme {
+  --color-primary: #234F1E
+}
+
 
 :root {
   --radius: 0.625rem;
@@ -43,6 +47,7 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --color-primary: #234F1E
 }
 
 .dark {
@@ -124,4 +129,20 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+
+
+.rbc-events-container {
+  margin-right: 0px !important;
+}
+
+.rbc-current-time-indicator {
+  background-color: var(--color-primary) !important;
+}
+
+.rbc-event {
+  background-color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+  outline-color: var(--color-primary) !important;
 }

@@ -19,6 +19,11 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/components/ui/avatar"
 
 const data = {
   user: {
@@ -58,17 +63,27 @@ const data = {
         },
       ],
     },
+    {
+      title: "History",
+      url: "#",
+      icon: History,
+      items: [
+        {
+          title: "Student ID Card",
+          url: "/history-applications",
+        },
+        {
+          title: "Good Moral",
+          url: "/history-requests",
+        },
+      ],
+    },
   ],
   others: [
     {
       name: "Calendar",
-      url: "#",
+      url: "/Calendar",
       icon: CalendarDays,
-    },
-    {
-      name: "History",
-      url: "#",
-      icon: History,
     },
   ],
 };
@@ -84,12 +99,15 @@ export function AppSidebar({ ...props }) {
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
               <a href="#">
-                <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-                  <Command className="size-4" />
+                <div className="text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
+                  <Avatar className="h-8 w-8 rounded-lg">
+                    <AvatarImage src="src\assets\logo.png" alt="cpsu" />
+                    <AvatarFallback className="rounded-lg">CPSU</AvatarFallback>
+                  </Avatar>
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-medium">Acme Inc</span>
-                  <span className="truncate text-xs">Enterprise</span>
+                  <span className="truncate font-medium">Central Philippines State University</span>
+                  <span className="truncate text-xs">Appointment System</span>
                 </div>
               </a>
             </SidebarMenuButton>

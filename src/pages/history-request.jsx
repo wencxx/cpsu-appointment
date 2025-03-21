@@ -14,7 +14,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { Badge } from "@/components/ui/badge";
-import { SquarePen, Trash, Check } from "lucide-react";
+import { SquarePen, Trash } from "lucide-react";
 
 const approveGoodMoral = [
   {
@@ -27,19 +27,19 @@ const approveGoodMoral = [
     syEnrolled: "2001",
     purpose: "Exam",
     scheduleDate: "2025-01-30",
-    status: "Pending",
+    status: "Approve",
   },
 ];
 
-function PendingRequests() {
+function ApproveRequests() {
   return (
     <>
       <div className="mb-10 w-full flex justify-between">
-        <h1 className="font-medium text-lg">List of Pending Good Moral Requests</h1>
+        <h1 className="font-medium text-lg">Good Moral Requests History</h1>
       </div>
       <Table>
         <TableCaption>
-          list of pending good moral requests.
+          good moral requests history.
         </TableCaption>
         <TableHeader>
           <TableRow>
@@ -67,20 +67,10 @@ function PendingRequests() {
               <TableCell>{goodMoral.purpose}</TableCell>
               <TableCell>{goodMoral.scheduleDate}</TableCell>
               <TableCell>
-                <Badge variant="pending">{goodMoral.status}</Badge>
+                <Badge variant="approved">{goodMoral.status}</Badge>
               </TableCell>
               <TableCell>
                 <div className="flex justify-center gap-x-1">
-                  <TooltipProvider>
-                    <Tooltip>
-                      <TooltipTrigger>
-                        <Check className="cursor-pointer" size={17} color="green" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Approve Request</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipTrigger>
@@ -111,4 +101,4 @@ function PendingRequests() {
   );
 }
 
-export default PendingRequests;
+export default ApproveRequests;
