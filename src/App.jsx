@@ -4,12 +4,14 @@ import ApproveApplication from "./pages/approve-applications"
 import PendingApplication from "./pages/pending-applications"
 import ApproveRequests from "./pages/approve-requests"
 import PendingRequests from "./pages/pending-requests"
+import LoginPage from "./pages/login"
 
 function App() {
   return (
     <>
       <Router>
         <Routes>
+            <Route path="/login" element={<LoginPage />} />
             <Route path="/" element={<Layout />}>
               <Route index element={<ApproveApplication />} />
               <Route path="/pending-applications" element={<PendingApplication />} />
