@@ -41,8 +41,8 @@ export function LoginForm({
       const res = await axios.post(`${endpoint()}/login`, credentials)
       
       if(res.data.message === 'Login successful'){
-        store.login((res.data.userData))
-        navigate('/')
+        const userData = res.data.userData
+        store.login(userData)
       }else{
         setErr(res.data)
       }

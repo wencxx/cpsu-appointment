@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom"
+import useAuthStore from "./store/authStore"
 import Layout from '@/layout/layout'
 import ApproveApplication from "./pages/approve-applications"
 import PendingApplication from "./pages/pending-applications"
@@ -9,17 +10,18 @@ import RegisterPage from "./pages/register"
 import HistoryApplication from "./pages/history-application"
 import HistoryRequest from "./pages/history-request"
 import Calendar from "./pages/calendar"
-import useAuthStore from "./store/authStore"
+import StudentApplication from './pages/student-application'
+import StudentRequest from './pages/student-request'
 
 function App() {
   const store = useAuthStore()
   const token = store.token
-
+  const currentUser = store.currentUser
   return (
     <>
       <Router>
         <Routes>
-            <Route path="/login" element={!token ? <LoginPage /> : <Navigate to="/" />} />
+            <Route path="/login" element={!token ? <LoginPage /> : (currentUser.role === 'admin' ? <Navigate to="/" /> : <Navigate to="/student/id-card-application" />)} />
             <Route path="/register" element={<RegisterPage />} />
              <Route
                 path="/"
@@ -32,6 +34,8 @@ function App() {
               <Route path="/history-applications" element={<HistoryApplication />} />
               <Route path="/history-requests" element={<HistoryRequest />} />
               <Route path="/calendar" element={<Calendar />} />
+              <Route path="/student/id-card-application" element={<StudentApplication />} />
+              <Route path="/student/good-moral-request" element={<StudentRequest />} />
             </Route>
         </Routes>
       </Router>

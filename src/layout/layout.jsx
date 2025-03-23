@@ -2,6 +2,7 @@ import { AppSidebar } from "@/components/sidebar/app-sidebar"
 import { SiteHeader } from "@/components/sidebar/site-header"
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
 import { Outlet } from "react-router-dom"
+import { Toaster } from "@/components/ui/sonner"
 
 export default function Layout() {
   return (
@@ -16,6 +17,7 @@ export default function Layout() {
             </div>
           </SidebarInset>
         </div>
+        <Toaster />
       </SidebarProvider>
     </div>
   )

@@ -1,13 +1,14 @@
 import * as React from "react";
 import {
   FileText,
-  Command,
   IdCard,
   CalendarDays,
-  History
+  History,
+  FileUser
 } from "lucide-react"
 
 import { NavMain } from "@/components/sidebar/nav-main";
+import { NavStudent } from "@/components/sidebar/nav-student";
 import { NavOthers } from "@/components/sidebar/nav-others";
 import { NavUser } from "@/components/sidebar/nav-user";
 import {
@@ -24,13 +25,9 @@ import {
   AvatarFallback,
   AvatarImage,
 } from "@/components/ui/avatar"
+import useAuthStore from "@/store/authStore";
 
 const data = {
-  user: {
-    name: "Rozenie Esparagoza",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
   main: [
     {
       title: "Student ID Card",
@@ -86,9 +83,24 @@ const data = {
       icon: CalendarDays,
     },
   ],
+  student: [
+    {
+      name: "Student ID Card",
+      url: "/student/id-card-application",
+      icon: FileUser,
+    },
+    {
+      name: "Good Moral",
+      url: "/student/good-moral-request",
+      icon: FileUser,
+    },
+  ],
 };
 
 export function AppSidebar({ ...props }) {
+
+  const store = useAuthStore()
+  const currentUser = store.currentUser
   return (
     <Sidebar
       className="top-(--header-height) h-[calc(100svh-var(--header-height))]!"
@@ -115,11 +127,12 @@ export function AppSidebar({ ...props }) {
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        <NavMain data={data.main} />
-        <NavOthers data={data.others} />
+        {currentUser && currentUser?.role === 'user' && (<NavStudent data={data.student} />)}
+        {currentUser && currentUser?.role === 'admin' && (<NavMain data={data.main} />)}
+        {currentUser && currentUser?.role === 'admin' && (<NavOthers data={data.others} />)}
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser user={currentUser} />
       </SidebarFooter>
     </Sidebar>
   );
