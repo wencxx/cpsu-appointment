@@ -316,7 +316,7 @@ function StudentRequest() {
   return ( 
     <>
       <div className="mb-10 w-full flex justify-between items-center">
-        <h1 className="font-medium text-lg">Student Good Moral Certificate Requests</h1>
+        <h1 className="font-medium text-lg uppercase">Student Good Moral Certificate Requests</h1>
         {/* dialog for adding */}
         <Dialog open={openDialog} onOpenChange={(isOpen) => setOpenDialog(isOpen)}>
           <DialogTrigger asChild>

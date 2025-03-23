@@ -188,7 +188,7 @@ function ApproveRequests() {
   return (
     <>
       <div className="mb-10 w-full flex justify-between">
-        <h1 className="font-medium text-lg">List of Pending Good Moral Requests</h1>
+        <h1 className="font-medium text-lg uppercase">List of Pending Good Moral Requests</h1>
       </div>
       <Card className="p-5 shadow-none">
         <Table>

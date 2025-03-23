@@ -70,7 +70,7 @@ const data = {
           url: "/history-applications",
         },
         {
-          title: "Good Moral",
+          title: "Good Moral Request",
           url: "/history-requests",
         },
       ],

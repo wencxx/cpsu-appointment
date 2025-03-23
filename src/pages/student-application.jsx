@@ -336,7 +336,7 @@ function StudentApplication() {
   return ( 
     <>
       <div className="mb-10 w-full flex justify-between items-center">
-        <h1 className="font-medium text-lg">Student ID Card Applications</h1>
+        <h1 className="font-medium text-lg uppercase">Student ID Card Applications</h1>
         {/* dialog for adding */}
         <Dialog open={openDialog} onOpenChange={(isOpen) => setOpenDialog(isOpen)}>
           <DialogTrigger asChild>

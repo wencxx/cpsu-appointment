@@ -157,7 +157,7 @@ function ApproveApplication() {
   return (
     <>
       <div className="mb-10 w-full flex justify-between">
-        <h1 className="font-medium text-lg">List of Approve Student ID Card</h1>
+        <h1 className="font-medium text-lg uppercase">List of Approve Student ID Card</h1>
       </div>
       <Card className="p-5 shadow-none">
         <Table>

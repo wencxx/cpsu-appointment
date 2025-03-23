@@ -38,6 +38,11 @@ export function RegisterForm({
     e.preventDefault()
     setErr('')
 
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+    if (!passwordRegex.test(formData.password)) {
+      return setErr("Password must be at least 8 characters long and include letters, numbers, and special characters.")
+    }
+
     if(formData.password !== formData.confirmPassword) return setErr("Password doesn't match")
 
     const { confirmPassword, ...data } = formData
