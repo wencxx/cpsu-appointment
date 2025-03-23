@@ -223,7 +223,7 @@ function ApproveApplication() {
             )) 
             : 
               <TableRow>
-                <TableCell colSpan={11} className='h-20'>No applications to show.</TableCell>
+                <TableCell colSpan={11} className='h-20 text-center'>No applications to show.</TableCell>
               </TableRow>
             }
           </TableBody>

@@ -446,7 +446,7 @@ function StudentRequest() {
                   </div>
                 </TableCell>
               </TableRow>
-            )) : <TableRow className='h-20'><TableCell colSpan={11} className='text-center'>No requests to show</TableCell></TableRow>}
+            )) : <TableRow><TableCell colSpan={10} className='text-center h-20'>No requests to show</TableCell></TableRow>}
           </TableBody>
         </Table>
       </Card>
