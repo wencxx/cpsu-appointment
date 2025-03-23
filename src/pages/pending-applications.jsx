@@ -228,7 +228,7 @@ function ApproveApplication() {
                 <TableCell>{application.guardianContact}</TableCell>
                 <TableCell>{formatSchedule(application.scheduleDate)}</TableCell>
                 <TableCell>
-                  <Badge variant="approved">{application.status}</Badge>
+                  <Badge variant="pending">{application.status}</Badge>
                 </TableCell>
                 <TableCell>
                   <div className="flex justify-center gap-x-1">
