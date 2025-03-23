@@ -46,7 +46,7 @@ import {
 } from "@/components/ui/alert-dialog";
 
 function StudentApplication() {
-  const  [openDialog, setOpenDialog] = useState(false)
+  const [openDialog, setOpenDialog] = useState(false)
   const [openUpdateDialog, setOpenUpdateDialog] = useState(false);
   const [selectedApplication, setSelectedApplication] = useState(null);
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
@@ -267,6 +267,7 @@ function StudentApplication() {
 
   const updateApplication = async (applicationId, updatedData) => {
     try {
+      setLoading(true)
       const res = await axios.put(`${endpoint()}/idcard-application/${applicationId}`, updatedData);
       if (res.data === 'Application updated.') {
         setUserApplications((prev) => prev.map(app => app._id === applicationId ? { ...app, ...updatedData } : app));
@@ -279,6 +280,8 @@ function StudentApplication() {
       }
     } catch (error) {
       setErr(error.message);
+    } finally {
+      setLoading(false)
     }
   };
 
