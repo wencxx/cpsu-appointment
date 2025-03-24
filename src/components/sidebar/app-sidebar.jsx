@@ -120,7 +120,7 @@ export function AppSidebar({ ...props }) {
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-medium">Central Philippines State University</span>
-                  <span className="truncate text-xs">Appointment System</span>
+                  <span className="truncate text-xs">CPSU OSSA APPOINTMENT SCHEDULER</span>
                 </div>
               </a>
             </SidebarMenuButton>

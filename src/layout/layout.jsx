@@ -27,7 +27,7 @@ export default function Layout() {
                       Central Philippines State University
                     </p>
                     <p className="text-sm text-muted-foreground">
-                      OSSA Appointment Scheduler
+                      Student Services and Affairs
                     </p>
                   </div>
                   <div className="flex items-center space-x-2">
