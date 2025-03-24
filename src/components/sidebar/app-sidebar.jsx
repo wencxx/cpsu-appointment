@@ -113,7 +113,7 @@ export function AppSidebar({ ...props }) {
               <a href="#">
                 <div className="text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
                   <Avatar className="h-8 w-8 rounded-lg">
-                    <AvatarImage src="src\assets\logo.png" alt="cpsu" />
+                    <AvatarImage src="/assets/logo.png" alt="cpsu" />
                     <AvatarFallback className="rounded-lg">CPSU</AvatarFallback>
                   </Avatar>
                 </div>

@@ -7,7 +7,7 @@ export default function LoginPage() {
         <div className="flex flex-col items-center self-center font-medium">
           <div className="w-20 aspect-square">
             {/* <GalleryVerticalEnd className="size-4" /> */}
-            <img src="src/assets/logo.png" alt="" />
+            <img src="/assets/logo.png" alt="" />
           </div>
           <p className="text-center">Central Philippines State University<br></br> Appointment System.</p>
         </div>

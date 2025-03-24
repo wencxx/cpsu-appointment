@@ -82,8 +82,8 @@ export function LoginForm({
                   </div>
                   <Input id="password" name="password" type="password" value={credentials.password} onChange={handleSubmit} required />
                 </div>
-                <Button type="submit" variant="primary" className="w-full">
-                  Login
+                <Button type="submit" variant="primary" className={`w-full ${loading && 'animate-pulse'}`} disabled={loading}>
+                  {!loading ? 'Login' : 'Logging in'}
                 </Button>
               </div>
               <div className="text-center text-sm">
