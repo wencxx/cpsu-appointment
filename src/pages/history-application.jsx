@@ -53,6 +53,7 @@ function ApproveApplication() {
       if(res.data !== 'No applications found'){
         setApplications(res.data)
       }
+
     } catch (error) {
       console.log(error)
     }

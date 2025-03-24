@@ -10,7 +10,7 @@ export default function LoginPage() {
             {/* <GalleryVerticalEnd className="size-4" /> */}
             <img src={Logo} alt="" />
           </div>
-          <p className="text-center">Central Philippines State University<br></br> Appointment System.</p>
+          <p className="text-center">Central Philippines State University<br></br>OSSA Appointment Scheduler.</p>
         </div>
         <LoginForm />
       </div>

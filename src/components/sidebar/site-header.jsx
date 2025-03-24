@@ -23,7 +23,7 @@ export function SiteHeader() {
         <Breadcrumb>
           <BreadcrumbList>
               <NavLink to="/" className="text-black font-medium">
-                CPSU APPOINTMENT
+                CPSU OSSA APPOINTMENT SCHEDULER
               </NavLink>
           </BreadcrumbList>
         </Breadcrumb>
