@@ -26,6 +26,7 @@ import {
   AvatarImage,
 } from "@/components/ui/avatar"
 import useAuthStore from "@/store/authStore";
+import Logo from '@/assets/logo.png'
 
 const data = {
   main: [
@@ -113,7 +114,7 @@ export function AppSidebar({ ...props }) {
               <a href="#">
                 <div className="text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
                   <Avatar className="h-8 w-8 rounded-lg">
-                    <AvatarImage src="/assets/logo.png" alt="cpsu" />
+                    <AvatarImage src={Logo} alt="cpsu" />
                     <AvatarFallback className="rounded-lg">CPSU</AvatarFallback>
                   </Avatar>
                 </div>
