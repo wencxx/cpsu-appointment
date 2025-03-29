@@ -33,7 +33,7 @@ import { useEffect, useState } from "react";
 import axios from 'axios'
 import endpoint from "@/connection/connection";
 import useAuthStore from "@/store/authStore";
-import { formatSchedule } from "@/utils/dataFormatter";
+import { formatSchedule, formatDateTimeLocal } from "@/utils/dataFormatter";
 import {
   Select,
   SelectContent,
@@ -234,7 +234,7 @@ function StudentRequest() {
       const res = await axios.post(`${endpoint()}/good-moral-requests`, formData)
 
       if(res.data === 'Requests submitted.') {
-        setUserGoodMoralRequests((prev) => ([...prev, { ...formData, status: 'Pending' }]))
+        getRequests()
         setOpenDialog(false)
         toast('Good moral certificate request submitted', {
           description: 'You will receive an SMS notification once your application is approved.',
@@ -260,7 +260,7 @@ function StudentRequest() {
     try {
       const res = await axios.put(`${endpoint()}/good-moral-requests/${requestId}`, updatedData);
       if (res.data === 'Request updated.') {
-        setUserGoodMoralRequests((prev) => prev.map(req => req._id === requestId ? { ...req, ...updatedData } : req));
+        getRequests()
         toast('Application updated successfully', {
           description: 'Your requests has been updated.',
           descriptionClassName: "!text-gray-500"
@@ -301,16 +301,6 @@ function StudentRequest() {
       setOpenDeleteDialog(false);
       setRequestToDelete(null);
     }
-  };
-
-  const formatDateTimeLocal = (date) => {
-    const d = new Date(date);
-    const month = `0${d.getMonth() + 1}`.slice(-2);
-    const day = `0${d.getDate()}`.slice(-2);
-    const year = d.getFullYear();
-    const hours = `0${d.getHours()}`.slice(-2);
-    const minutes = `0${d.getMinutes()}`.slice(-2);
-    return `${year}-${month}-${day}T${hours}:${minutes}`;
   };
   
   return ( 

@@ -33,7 +33,7 @@ import { useEffect, useState } from "react";
 import axios from 'axios'
 import endpoint from "@/connection/connection";
 import useAuthStore from "@/store/authStore";
-import { formatBirth, formatSchedule } from "@/utils/dataFormatter";
+import { formatBirth, formatSchedule, formatDateTimeLocal } from "@/utils/dataFormatter";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -243,7 +243,7 @@ function StudentApplication() {
       const res = await axios.post(`${endpoint()}/idcard-application`, formData)
 
       if(res.data === 'Application submitted.') {
-        setUserApplications((prev) => ([...prev, { ...formData, status: 'Pending' }]))
+        getApplications()
         setOpenDialog(false)
         toast('Student ID Card Application submitted', {
           description: 'You will receive an SMS notification once your application is approved.',
@@ -270,7 +270,7 @@ function StudentApplication() {
       setLoading(true)
       const res = await axios.put(`${endpoint()}/idcard-application/${applicationId}`, updatedData);
       if (res.data === 'Application updated.') {
-        setUserApplications((prev) => prev.map(app => app._id === applicationId ? { ...app, ...updatedData } : app));
+        getApplications()
         toast('Application updated successfully', {
           description: 'Your application has been updated.',
           descriptionClassName: "!text-gray-500"
@@ -323,16 +323,6 @@ function StudentApplication() {
     return `${year}-${month}-${day}`;
   };
   
-  const formatDateTimeLocal = (date) => {
-    const d = new Date(date);
-    const month = `0${d.getMonth() + 1}`.slice(-2);
-    const day = `0${d.getDate()}`.slice(-2);
-    const year = d.getFullYear();
-    const hours = `0${d.getHours()}`.slice(-2);
-    const minutes = `0${d.getMinutes()}`.slice(-2);
-    return `${year}-${month}-${day}T${hours}:${minutes}`;
-  };
-
   return ( 
     <>
       <div className="mb-10 w-full flex justify-between items-center">

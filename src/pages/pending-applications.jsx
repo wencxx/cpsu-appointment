@@ -30,7 +30,7 @@ import { Label } from "@/components/ui/label"
 import { Card } from "@/components/ui/card";
 import endpoint from "@/connection/connection";
 import axios from 'axios'
-import { formatBirth, formatSchedule } from "@/utils/dataFormatter";
+import { formatBirth, formatSchedule, formatDateTimeLocal } from "@/utils/dataFormatter";
 import { useEffect, useState } from "react";
 import {
   AlertDialog,
@@ -88,7 +88,7 @@ function ApproveApplication() {
       setLoading(true)
       const res = await axios.put(`${endpoint()}/idcard-application/${applicationId}`, updatedData);
       if (res.data === 'Application updated.') {
-        setApplications((prev) => prev.map(app => app._id === applicationId ? { ...app, ...updatedData } : app));
+        getApplications()
         toast('Application updated successfully', {
           description: 'Your application has been updated.',
           descriptionClassName: "!text-gray-500"
@@ -109,16 +109,6 @@ function ApproveApplication() {
     const day = `0${d.getDate()}`.slice(-2);
     const year = d.getFullYear();
     return `${year}-${month}-${day}`;
-  };
-  
-  const formatDateTimeLocal = (date) => {
-    const d = new Date(date);
-    const month = `0${d.getMonth() + 1}`.slice(-2);
-    const day = `0${d.getDate()}`.slice(-2);
-    const year = d.getFullYear();
-    const hours = `0${d.getHours()}`.slice(-2);
-    const minutes = `0${d.getMinutes()}`.slice(-2);
-    return `${year}-${month}-${day}T${hours}:${minutes}`;
   };
 
   // delete logic
