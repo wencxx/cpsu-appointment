@@ -4,7 +4,9 @@ import {
   IdCard,
   CalendarDays,
   History,
-  FileUser
+  FileUser,
+  Info,
+  Book
 } from "lucide-react"
 
 import { NavMain } from "@/components/sidebar/nav-main";
@@ -83,6 +85,16 @@ const data = {
       url: "/Calendar",
       icon: CalendarDays,
     },
+    {
+      name: "About Us",
+      url: "/about-us",
+      icon: Info,
+    },
+    {
+      name: "User Manual",
+      url: "/user-manual",
+      icon: Book,
+    },
   ],
   student: [
     {
@@ -94,6 +106,16 @@ const data = {
       name: "Good Moral",
       url: "/student/good-moral-request",
       icon: FileUser,
+    },
+    {
+      name: "About Us",
+      url: "/about-us",
+      icon: Info,
+    },
+    {
+      name: "User Manual",
+      url: "/user-manual",
+      icon: Book,
     },
   ],
 };

@@ -12,6 +12,8 @@ import HistoryRequest from "./pages/history-request"
 import Calendar from "./pages/calendar"
 import StudentApplication from './pages/student-application'
 import StudentRequest from './pages/student-request'
+import AboutUs from './pages/about-us'
+import UserManual from './pages/user-manual'
 
 function App() {
   const store = useAuthStore()
@@ -34,6 +36,8 @@ function App() {
               <Route path="/history-applications" element={<HistoryApplication />} />
               <Route path="/history-requests" element={<HistoryRequest />} />
               <Route path="/calendar" element={<Calendar />} />
+              <Route path="/about-us" element={<AboutUs />} />
+              <Route path="/user-manual" element={<UserManual />} />
               <Route path="/student/id-card-application" element={<StudentApplication />} />
               <Route path="/student/good-moral-request" element={<StudentRequest />} />
             </Route>

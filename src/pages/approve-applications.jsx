@@ -14,7 +14,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { Badge } from "@/components/ui/badge";
-import { SquarePen, Trash } from "lucide-react";
+import { SquarePen, Trash, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -144,6 +144,31 @@ function ApproveApplication() {
       setApplicationToDelete(null);
     }
   };
+
+   // claim logic
+   const [openClaimDialog, setOpenClaimDialog] = useState(false);
+   const [claimRequestId, setRequestId] = useState("");
+ 
+   const confirmClaimRequest = (requestId) => {
+     setOpenClaimDialog(true);
+     setRequestId(requestId);
+   };
+ 
+   const handleClaimRequest = async () => {
+     try {
+       const res = await axios.put(
+         `${endpoint()}/claim-application/${claimRequestId}`
+       );
+       if (res.data === "Request claimed.") {
+          getApplications();
+          toast("Request has been claimed");
+       } else {
+         setErr(res.data);
+       }
+     } catch (error) {
+       setErr(error.message);
+     }
+   };
   return (
     <>
       <div className="mb-10 w-full flex justify-between">
@@ -166,6 +191,7 @@ function ApproveApplication() {
               <TableHead>Guardian Contact</TableHead>
               <TableHead>Schedule Date</TableHead>
               <TableHead>Status</TableHead>
+              <TableHead>Claimed</TableHead>
               <TableHead className="text-center">Action</TableHead>
             </TableRow>
           </TableHeader>
@@ -186,7 +212,29 @@ function ApproveApplication() {
                   <Badge variant="approved">{application.status}</Badge>
                 </TableCell>
                 <TableCell>
+                    <Badge variant={application.claimed ? "approved" : "pending"}>
+                      {application.claimed ? "Yes" : "No"}
+                    </Badge>
+                  </TableCell>
+                <TableCell>
                   <div className="flex justify-center gap-x-1">
+                    {!application.claimed && (
+                        <TooltipProvider>
+                          <Tooltip>
+                            <TooltipTrigger>
+                              <Check
+                                className="cursor-pointer"
+                                size={17}
+                                color="green"
+                                onClick={() => confirmClaimRequest(application._id)}
+                              />
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p>Request Claimed</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </TooltipProvider>
+                      )}
                     <TooltipProvider>
                       <Tooltip>
                         <TooltipTrigger>
@@ -232,6 +280,30 @@ function ApproveApplication() {
           <AlertDialogFooter>
             <AlertDialogCancel onClick={() => setOpenDeleteDialog(false)}>Cancel</AlertDialogCancel>
             <AlertDialogAction className="bg-red-600 hover:bg-red-700" onClick={handleDeleteApplication}>Delete</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      
+      {/* alert for claiming */}
+      <AlertDialog open={openClaimDialog} onOpenChange={setOpenClaimDialog}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Confirm</AlertDialogTitle>
+            <AlertDialogDescription>
+              Are you sure you want to proceed? This action cannot be undone.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel onClick={() => setOpenClaimDialog(false)}>
+              Cancel
+            </AlertDialogCancel>
+            <AlertDialogAction
+              className="bg-red-600 hover:bg-red-700"
+              onClick={handleClaimRequest}
+            >
+              Claimed
+            </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>

@@ -216,16 +216,16 @@ function ApproveRequests() {
                   </TableCell>
                   <TableCell>
                     <div className="flex justify-center gap-x-1">
-                    <TooltipProvider>
-                      <Tooltip>
-                        <TooltipTrigger>
-                          <Check className="cursor-pointer" size={17} color="green" onClick={() => confirmApproveRequest(req._id)} />
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          <p>Approve Request</p>
-                        </TooltipContent>
-                      </Tooltip>
-                    </TooltipProvider>
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger>
+                            <Check className="cursor-pointer" size={17} color="green" onClick={() => confirmApproveRequest(req._id)} />
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>Approve Request</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
                       <TooltipProvider>
                         <Tooltip>
                           <TooltipTrigger>

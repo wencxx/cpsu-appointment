@@ -393,6 +393,7 @@ function StudentRequest() {
               <TableHead>Purpose</TableHead>
               <TableHead>Selected Date</TableHead>
               <TableHead>Status</TableHead>
+              <TableHead>Claimed</TableHead>
               <TableHead className="text-center">Action</TableHead>
             </TableRow>
           </TableHeader>
@@ -410,6 +411,9 @@ function StudentRequest() {
                 <TableCell>{formatSchedule(request.selectedDate)}</TableCell>
                 <TableCell>
                   <Badge variant={request.status === 'approved' ? 'approved' : 'pending'}>{request.status}</Badge>
+                </TableCell>
+                <TableCell>
+                  <Badge variant={request.claimed ? 'approved' : 'pending'}>{request.claimed ? 'Yes' : 'No'}</Badge>
                 </TableCell>
                 <TableCell>
                   <div className="flex justify-center gap-x-1">

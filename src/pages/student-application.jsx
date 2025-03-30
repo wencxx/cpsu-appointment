@@ -405,6 +405,7 @@ function StudentApplication() {
               <TableHead>Guardian Contact</TableHead>
               <TableHead>Schedule Date</TableHead>
               <TableHead>Status</TableHead>
+              <TableHead>Claimed</TableHead>
               <TableHead className="text-center">Action</TableHead>
             </TableRow>
           </TableHeader>
@@ -422,6 +423,9 @@ function StudentApplication() {
                 <TableCell>{formatSchedule(application.scheduleDate)}</TableCell>
                 <TableCell>
                   <Badge variant={application.status === 'approved' ? 'approved' : 'pending'}>{application.status}</Badge>
+                </TableCell>
+                <TableCell>
+                  <Badge variant={application.claimed ? 'approved' : 'pending'}>{application.claimed ? 'Yes' : 'No'}</Badge>
                 </TableCell>
                 <TableCell>
                   <div className="flex justify-center gap-x-1">
