@@ -21,7 +21,7 @@ export default function UserManual() {
       </Alert>
 
       <Tabs defaultValue="overview" className="mb-8">
-        <TabsList className="grid grid-cols-4 mb-4 w-full">
+        <TabsList className="grid grid-cols-2 md:grid-cols-4 mb-10 lg:mb-4 w-full">
           <TabsTrigger value="overview">Overview</TabsTrigger>
           <TabsTrigger value="id-card">ID Card Application</TabsTrigger>
           <TabsTrigger value="good-moral">Good Moral Certificate</TabsTrigger>
