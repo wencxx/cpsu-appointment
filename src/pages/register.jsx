@@ -1,4 +1,5 @@
-import { RegisterForm } from "@/components/register-form"
+import { RegisterForm } from "@/components/register-form";
+import Logo from "@/assets/logo.png";
 
 export default function RegisterPage() {
   return (
@@ -6,12 +7,16 @@ export default function RegisterPage() {
       <div className="flex w-full max-w-lg flex-col gap-6">
         <div className="flex flex-col items-center self-center font-medium">
           <div className="w-20 aspect-square">
-            <img src="src/assets/logo.png" alt="" />
+            {/* <GalleryVerticalEnd className="size-4" /> */}
+            <img src={Logo} alt="" />
           </div>
-          <p className="text-center">Central Philippines State University<br></br> Appointment System.</p>
+          <p className="text-center">
+            Central Philippines State University<br></br>OSSA Appointment
+            Scheduler.
+          </p>
         </div>
         <RegisterForm />
       </div>
     </div>
-  )
-} 
+  );
+}
