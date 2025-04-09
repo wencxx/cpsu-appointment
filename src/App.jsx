@@ -23,7 +23,7 @@ function App() {
     <>
       <Router>
         <Routes>
-            <Route path="/login" element={!token ? <LoginPage /> : (currentUser.role === 'admin' ? <Navigate to="/" /> : <Navigate to="/student/id-card-application" />)} />
+            <Route path="/login" element={!token ? <LoginPage /> : (currentUser?.role === 'admin' ? <Navigate to="/" /> : <Navigate to="/student/id-card-application" />)} />
             <Route path="/register" element={<RegisterPage />} />
              <Route
                 path="/"

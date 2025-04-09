@@ -14,7 +14,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { Badge } from "@/components/ui/badge";
-import { SquarePen, Trash, Check } from "lucide-react";
+import { SquarePen, Trash, Check, CalendarSearch } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -235,10 +235,10 @@ function ApproveApplication() {
                     <TooltipProvider>
                       <Tooltip>
                         <TooltipTrigger>
-                          <SquarePen className="cursor-pointer" size={17} color="orange" onClick={() => { setSelectedApplication(application); setOpenUpdateDialog(true); }} />
+                          <CalendarSearch className="cursor-pointer" size={17} color="orange" onClick={() => { setSelectedApplication(application); setOpenUpdateDialog(true); }} />
                         </TooltipTrigger>
                         <TooltipContent>
-                          <p>Edit Application</p>
+                          <p>Reschedule Application</p>
                         </TooltipContent>
                       </Tooltip>
                     </TooltipProvider>
@@ -301,12 +301,12 @@ function ApproveApplication() {
       <Dialog open={openUpdateDialog} onOpenChange={(isOpen) => setOpenUpdateDialog(isOpen)}>
         <DialogContent className="sm:max-w-xl">
           <DialogHeader>
-            <DialogTitle>Update Application</DialogTitle>
+            <DialogTitle>Reschedule Application</DialogTitle>
             <DialogDescription></DialogDescription>
           </DialogHeader>
           {err && <p className="bg-red-500 text-white pl-2 py-1 rounded text-sm">{err}</p>}
           <form onSubmit={submitUpdateForm} className="grid grid-cols-2 gap-4">
-            <div className="space-y-2">
+            {/* <div className="space-y-2">
               <Label htmlFor="idNumber">ID Number</Label>
               <Input id="idNumber" name='idNumber' type="text" value={selectedApplication?.idNumber} onChange={handleUpdateFormChange} required />
             </div>
@@ -337,16 +337,16 @@ function ApproveApplication() {
             <div className="space-y-2">
               <Label htmlFor="guardianContact">Guardian contact number</Label>
               <Input id="guardianContact" name="guardianContact" type="text" value={selectedApplication?.guardianContact} onChange={handleUpdateFormChange} required />
-            </div>
+            </div> */}
             <div className="space-y-2">
               <Label htmlFor="scheduleDate">Preferred schedule date</Label>
               <Input id="scheduleDate" name="scheduleDate" type="datetime-local" value={selectedApplication?.scheduleDate ? formatDateTimeLocal(selectedApplication.scheduleDate) : ''} onChange={handleUpdateFormChange} required />
             </div>
             <DialogFooter className="col-span-2">
               {!loading ? (
-                <Button type="submit" variant="primary">Update Application</Button>
+                <Button type="submit" variant="primary">Reschedule</Button>
               ) : (
-                <Button type="submit" variant="primary" className="animate-pulse" disabled>Updating Application</Button>
+                <Button type="submit" variant="primary" className="animate-pulse" disabled>Rescheduling</Button>
               )}
             </DialogFooter>
           </form>

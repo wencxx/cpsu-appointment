@@ -44,7 +44,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { SquarePen, Trash, Check } from "lucide-react";
+import { SquarePen, Trash, Check, CalendarSearch } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -229,10 +229,10 @@ function ApproveRequests() {
                       <TooltipProvider>
                         <Tooltip>
                           <TooltipTrigger>
-                            <SquarePen className="cursor-pointer" size={17} color="orange" onClick={() => { setSelectedRequest(req); setOpenUpdateDialog(true); }} />
+                            <CalendarSearch className="cursor-pointer" size={17} color="orange" onClick={() => { setSelectedRequest(req); setOpenUpdateDialog(true); }} />
                           </TooltipTrigger>
                           <TooltipContent>
-                            <p>Edit Application</p>
+                            <p>Reschedule Request</p>
                           </TooltipContent>
                         </Tooltip>
                       </TooltipProvider>
@@ -242,7 +242,7 @@ function ApproveRequests() {
                             <Trash className="cursor-pointer" size={17} color="red" onClick={() => confirmDeleteRequest(req._id)} />
                           </TooltipTrigger>
                           <TooltipContent>
-                            <p>Delete Application</p>
+                            <p>Delete Request</p>
                           </TooltipContent>
                         </Tooltip>
                       </TooltipProvider>
@@ -293,12 +293,12 @@ function ApproveRequests() {
       <Dialog open={openUpdateDialog} onOpenChange={(isOpen) => setOpenUpdateDialog(isOpen)}>
         <DialogContent className="sm:max-w-xl">
           <DialogHeader>
-            <DialogTitle>Update Application</DialogTitle>
+            <DialogTitle>Reschedule Request</DialogTitle>
             <DialogDescription></DialogDescription>
           </DialogHeader>
           {err && <p className="bg-red-500 text-white pl-2 py-1 rounded text-sm">{err}</p>}
           <form onSubmit={submitUpdateForm} className="grid grid-cols-2 gap-4">
-             <div className="space-y-2">
+             {/* <div className="space-y-2">
                 <Label htmlFor="orNumber">OR Number</Label>
                 <Input id="orNumber" name='orNumber' type="text" value={selectedRequest?.orNumber} onChange={handleUpdateFormChange} required />
               </div>
@@ -333,20 +333,20 @@ function ApproveRequests() {
               <div className="space-y-2">
                 <Label htmlFor="syCurrentlyEnrolled">SY Currently Enrolled</Label>
                 <Input id="syCurrentlyEnrolled" name="syCurrentlyEnrolled" type="text" value={selectedRequest?.syCurrentlyEnrolled} onChange={handleUpdateFormChange} />
-              </div>
+              </div> */}
               <div className="space-y-2">
                 <Label htmlFor="selectedDate">Select date</Label>
                 <Input id="selectedDate" name="selectedDate" type="datetime-local" value={selectedRequest?.selectedDate ? formatDateTimeLocal(selectedRequest.selectedDate) : ''} onChange={handleUpdateFormChange} required />
               </div>
-              <div className="space-y-2 col-span-2">
+              {/* <div className="space-y-2 col-span-2">
                 <Label htmlFor="purpose">Purpose</Label>
                 <Textarea id="purpose" name="purpose" value={selectedRequest?.purpose} onChange={handleUpdateFormChange} required/>
-              </div>
+              </div> */}
             <DialogFooter className="col-span-2">
               {!loading ? (
-                <Button type="submit" variant="primary">Update Request</Button>
+                <Button type="submit" variant="primary">Reschedule</Button>
               ) : (
-                <Button type="submit" variant="primary" className="animate-pulse" disabled>Updating Request</Button>
+                <Button type="submit" variant="primary" className="animate-pulse" disabled>Rescheduling</Button>
               )}
             </DialogFooter>
           </form>
