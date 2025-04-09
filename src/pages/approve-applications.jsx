@@ -235,7 +235,7 @@ function ApproveApplication() {
                           </Tooltip>
                         </TooltipProvider>
                       )}
-                    <TooltipProvider>
+                    {/* <TooltipProvider>
                       <Tooltip>
                         <TooltipTrigger>
                           <SquarePen className="cursor-pointer" size={17} color="orange" onClick={() => { setSelectedApplication(application); setOpenUpdateDialog(true); }} />
@@ -244,7 +244,7 @@ function ApproveApplication() {
                           <p>Edit Application</p>
                         </TooltipContent>
                       </Tooltip>
-                    </TooltipProvider>
+                    </TooltipProvider> */}
                     <TooltipProvider>
                       <Tooltip>
                         <TooltipTrigger>

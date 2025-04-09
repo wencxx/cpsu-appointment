@@ -235,7 +235,7 @@ function ApproveRequests() {
                           </Tooltip>
                         </TooltipProvider>
                       )}
-                      <TooltipProvider>
+                      {/* <TooltipProvider>
                         <Tooltip>
                           <TooltipTrigger>
                             <SquarePen
@@ -249,10 +249,10 @@ function ApproveRequests() {
                             />
                           </TooltipTrigger>
                           <TooltipContent>
-                            <p>Edit Application</p>
+                            <p>Edit Request</p>
                           </TooltipContent>
                         </Tooltip>
-                      </TooltipProvider>
+                      </TooltipProvider> */}
                       <TooltipProvider>
                         <Tooltip>
                           <TooltipTrigger>
@@ -264,7 +264,7 @@ function ApproveRequests() {
                             />
                           </TooltipTrigger>
                           <TooltipContent>
-                            <p>Delete Application</p>
+                            <p>Delete Request</p>
                           </TooltipContent>
                         </Tooltip>
                       </TooltipProvider>
