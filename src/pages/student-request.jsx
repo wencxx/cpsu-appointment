@@ -204,34 +204,34 @@ function StudentRequest() {
       // Check if the selected time slot is already full
       const morningRequests = requests.filter(req => {
         const reqDate = new Date(req.selectedDate);
-        return reqDate.getDate() === selectedDateTime.getDate() &&
-               reqDate.getMonth() === selectedDateTime.getMonth() &&
-               reqDate.getFullYear() === selectedDateTime.getFullYear() &&
-               reqDate.getHours() >= 8 && reqDate.getHours() < 12;
+        return reqDate.getUTCDate() === selectedDateTime.getUTCDate() &&
+               reqDate.getUTCMonth() === selectedDateTime.getUTCMonth() &&
+               reqDate.getUTCFullYear() === selectedDateTime.getUTCFullYear() &&
+               reqDate.getUTCHours() >= 8 && reqDate.getUTCHours() < 12;
       });
   
       const afternoonRequests = requests.filter(req => {
         const reqDate = new Date(req.selectedDate);
-        return reqDate.getDate() === selectedDateTime.getDate() &&
-               reqDate.getMonth() === selectedDateTime.getMonth() &&
-               reqDate.getFullYear() === selectedDateTime.getFullYear() &&
-               reqDate.getHours() >= 13 && reqDate.getHours() < 17;
+        return reqDate.getUTCDate() === selectedDateTime.getUTCDate() &&
+               reqDate.getUTCMonth() === selectedDateTime.getUTCMonth() &&
+               reqDate.getUTCFullYear() === selectedDateTime.getUTCFullYear() &&
+               reqDate.getUTCHours() >= 13 && reqDate.getUTCHours() < 17;
       });
 
       const morningApplications = applications.filter(app => {
         const appDate = new Date(app.scheduleDate);
-        return appDate.getDate() === selectedDateTime.getDate() &&
-               appDate.getMonth() === selectedDateTime.getMonth() &&
-               appDate.getFullYear() === selectedDateTime.getFullYear() &&
-               appDate.getHours() >= 8 && appDate.getHours() < 12;
+        return appDate.getUTCDate() === selectedDateTime.getUTCDate() &&
+               appDate.getUTCMonth() === selectedDateTime.getUTCMonth() &&
+               appDate.getUTCFullYear() === selectedDateTime.getUTCFullYear() &&
+               appDate.getUTCHours() >= 8 && appDate.getUTCHours() < 12;
       });
   
       const afternoonApplications = applications.filter(app => {
         const appDate = new Date(app.scheduleDate);
-        return appDate.getDate() === selectedDateTime.getDate() &&
-               appDate.getMonth() === selectedDateTime.getMonth() &&
-               appDate.getFullYear() === selectedDateTime.getFullYear() &&
-               appDate.getHours() >= 13 && appDate.getHours() < 17;
+        return appDate.getUTCDate() === selectedDateTime.getUTCDate() &&
+               appDate.getUTCMonth() === selectedDateTime.getUTCMonth() &&
+               appDate.getUTCFullYear() === selectedDateTime.getUTCFullYear() &&
+               appDate.getUTCHours() >= 13 && appDate.getUTCHours() < 17;
       });
 
       const morningData = morningApplications.length + morningRequests.length
