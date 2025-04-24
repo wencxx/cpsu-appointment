@@ -120,7 +120,7 @@ function StudentRequest() {
   const [formData, setFormData] = useState({
     orNumber: "",
     fullName: "",
-    number: "+63",
+    number: "+639",
     courseYear: "",
     gender: "",
     syGraduated: "",
@@ -133,7 +133,7 @@ function StudentRequest() {
   const handleFormChange = (e) => {
     const { value, name } = e.target
 
-    if ((name === "number" ) && !value.startsWith("+63")) {
+    if ((name === "number" ) && !value.startsWith("+639")) {
       return;
     }
 

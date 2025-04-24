@@ -103,10 +103,10 @@ function StudentApplication() {
     fullName: "",
     courseYear: "",
     address: "",
-    number: "+63",
+    number: "+639",
     birthday: "",
     guardianName: "",
-    guardianContact: "+63",
+    guardianContact: "+639",
     scheduleDate: "",
     userId: currentUser?._id
   })
@@ -124,7 +124,7 @@ function StudentApplication() {
   const handleFormChange = (e) => {
     const { value, name } = e.target
 
-    if ((name === "number" || name === "guardianContact") && !value.startsWith("+63")) {
+    if ((name === "number" || name === "guardianContact") && !value.startsWith("+639")) {
       return;
     }
 
