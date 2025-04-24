@@ -103,16 +103,30 @@ function StudentApplication() {
     fullName: "",
     courseYear: "",
     address: "",
-    number: "",
+    number: "+63",
     birthday: "",
     guardianName: "",
-    guardianContact: "",
+    guardianContact: "+63",
     scheduleDate: "",
     userId: currentUser?._id
   })
 
+  const getCurrentDateTime = () => {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = `0${now.getMonth() + 1}`.slice(-2);
+    const date = `0${now.getDate()}`.slice(-2);
+    const hours = `0${now.getHours()}`.slice(-2);
+    const minutes = `0${now.getMinutes()}`.slice(-2);
+    return `${year}-${month}-${date}T${hours}:${minutes}`;
+  };
+
   const handleFormChange = (e) => {
     const { value, name } = e.target
+
+    if ((name === "number" || name === "guardianContact") && !value.startsWith("+63")) {
+      return;
+    }
 
     setFormData((prev) => (
       {
@@ -124,6 +138,11 @@ function StudentApplication() {
 
   const handleUpdateFormChange = (e) => {
     const { value, name } = e.target;
+
+    if ((name === "number" || name === "guardianContact") && !value.startsWith("+63")) {
+      return;
+    }
+
     setSelectedApplication((prev) => ({
       ...prev,
       [name]: value,
@@ -357,7 +376,7 @@ function StudentApplication() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="contactNumber">Contact Number</Label>
-                <Input id="contactNumber" name="number" type="text" onChange={handleFormChange} required />
+                <Input id="contactNumber" name="number" type="text" value={formData.number} onChange={handleFormChange} required />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="birthday">Birthday</Label>
@@ -369,11 +388,11 @@ function StudentApplication() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="guardianContact">Guardian contact number</Label>
-                <Input id="guardianContact" name="guardianContact" type="text" onChange={handleFormChange} required />
+                <Input id="guardianContact" name="guardianContact" type="text" value={formData.guardianContact} onChange={handleFormChange} required />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="scheduleDate">Preferred schedule date</Label>
-                <Input id="scheduleDate" name="scheduleDate" type="datetime-local" value={formData.scheduleDate} onChange={handleFormChange} required />
+                <Input id="scheduleDate" name="scheduleDate" type="datetime-local" value={formData.scheduleDate} min={getCurrentDateTime()} onChange={handleFormChange} required />
               </div>
               <DialogFooter className="col-span-2">
                 {!loading ? (

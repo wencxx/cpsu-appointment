@@ -117,7 +117,7 @@ export function RegisterForm({
                   <Input id="password" type="password" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} required />
                 </div>
                 <Button type="submit" variant="primary" className={`w-full col-span-2 ${loading && 'animate-pulse'}`} disabled={loading}>
-                  {loading ? 'Regostering' : 'Register'}
+                  {loading ? 'Registering' : 'Register'}
                 </Button>
               </div>
               <div className="text-center text-sm">

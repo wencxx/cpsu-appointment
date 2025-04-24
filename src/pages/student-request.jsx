@@ -78,6 +78,16 @@ function StudentRequest() {
     }
   }
 
+  const getCurrentDateTime = () => {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = `0${now.getMonth() + 1}`.slice(-2);
+    const date = `0${now.getDate()}`.slice(-2);
+    const hours = `0${now.getHours()}`.slice(-2);
+    const minutes = `0${now.getMinutes()}`.slice(-2);
+    return `${year}-${month}-${date}T${hours}:${minutes}`;
+  };
+
   const getApplications = async () => {
     try {
       const res = await axios.get(`${endpoint()}/idcard-application`)
@@ -110,7 +120,7 @@ function StudentRequest() {
   const [formData, setFormData] = useState({
     orNumber: "",
     fullName: "",
-    number: "",
+    number: "+63",
     courseYear: "",
     gender: "",
     syGraduated: "",
@@ -123,6 +133,10 @@ function StudentRequest() {
   const handleFormChange = (e) => {
     const { value, name } = e.target
 
+    if ((name === "number" ) && !value.startsWith("+63")) {
+      return;
+    }
+
     setFormData((prev) => (
       {
         ...prev,
@@ -133,6 +147,11 @@ function StudentRequest() {
 
   const handleUpdateFormChange = (e) => {
     const { value, name } = e.target;
+
+    if ((name === "number" ) && !value.startsWith("+63")) {
+      return;
+    }
+
     setSelectedRequest((prev) => ({
       ...prev,
       [name]: value,
@@ -345,7 +364,7 @@ function StudentRequest() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="number">Contact Number</Label>
-                <Input id="number" name="number" type="text" onChange={handleFormChange} required />
+                <Input id="number" name="number" type="text" value={formData.number} onChange={handleFormChange} required />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="syGraduated">SY Graduated</Label>
@@ -357,7 +376,7 @@ function StudentRequest() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="selectedDate">Select date</Label>
-                <Input id="selectedDate" name="selectedDate" type="datetime-local" value={formData.scheduleDate} onChange={handleFormChange} required />
+                <Input id="selectedDate" name="selectedDate" type="datetime-local" min={getCurrentDateTime()} value={formData.scheduleDate} onChange={handleFormChange} required />
               </div>
               <div className="space-y-2 col-span-2">
                 <Label htmlFor="purpose">Purpose</Label>
